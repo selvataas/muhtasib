@@ -1,0 +1,27 @@
+# config_gemini.yaml
+input_excel: "/home/stas/compliance_parse/cu_extraction/Coklu_Kanun_Maddeler_20250923_150711.xlsx"
+sheet: 0
+output_csv: "compliance_units_gemini.csv"
+quality_report_csv: "quality_report_gemini.csv"
+
+# Model Configuration - Gemini
+model_provider: "google"
+model_name: "gemini-pro"  # gemini-flash (hızlı ve düşük quota) - Gemini 2.5 Flash
+
+use_cot_reasoning: true   # Flash için paper metodolojisi
+use_few_shot: true       # Flash için kaliteli örnekler  
+max_examples: 2          # Flash için daha az örnek
+min_actionable_score: 0.6
+min_feasibility_score: 0.7
+temperature: 0.1
+
+# Gemini Flash optimizasyonları
+batch_size: 8            # Flash için daha hızlı batch
+api_delay: 0.5          # Flash için kısa delay
+max_retries: 3
+retry_delay: 5.0        # Normal retry delay
+max_tokens: 2000        # Flash için yeterli token
+
+# Processing Parameters
+min_constraint_words: 3
+max_constraint_words: 15
